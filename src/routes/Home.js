@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import ToDo from "../components/ToDo";
 import { addToDo } from "../store";
 
 const Home = () => {
@@ -7,7 +8,7 @@ const Home = () => {
   const onChange = (event) => {
     setText(event.target.value);
   };
-  const toDo = useSelector((state) => state);
+  const toDos = useSelector((state) => state);
   const dispatch = useDispatch();
   const onSubmit = (event) => {
     event.preventDefault();
@@ -21,7 +22,11 @@ const Home = () => {
         <input type="text" value={text} onChange={onChange} />
         <button onClick={onSubmit}>등록</button>
       </form>
-      <ul>{JSON.stringify(toDo)}</ul>
+      <ul>
+        {toDos.map((toDo) => (
+          <ToDo {...toDo} key={toDo.id} />
+        ))}
+      </ul>
     </>
   );
 };
