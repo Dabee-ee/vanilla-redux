@@ -11,9 +11,8 @@ function ToDo({ text, id }) {
   };
   return (
     <li>
-      <Link to={`/${id}`}>
-        {text} <button onClick={hadleDeleteButton}>DEL</button>
-      </Link>
+      <Link to={`/${id}`}> {text} </Link>
+      <button onClick={hadleDeleteButton}>DEL</button>
     </li>
   );
 }
